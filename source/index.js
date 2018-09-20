@@ -724,7 +724,7 @@ module.exports = function (THREE) {
         // Create mesh
 
         var mesh;
-
+        
         if (createdMaterials.length > 1) {
 
           for (var mi = 0, miLen = materials.length; mi < miLen; mi++) {
@@ -734,11 +734,9 @@ module.exports = function (THREE) {
 
           }
 
-          var multiMaterial = new THREE.MultiMaterial(createdMaterials);
-          mesh = (!isLine ? new THREE.Mesh(buffergeometry, multiMaterial) : new THREE.LineSegments(buffergeometry, multiMaterial));
-
+          mesh = (!isLine ? new THREE.Mesh(buffergeometry, createdMaterials) : new THREE.LineSegments(buffergeometry, createdMaterials));
         } else {
-
+          
           mesh = (!isLine ? new THREE.Mesh(buffergeometry, createdMaterials[0]) : new THREE.LineSegments(buffergeometry, createdMaterials[0]));
         }
 
